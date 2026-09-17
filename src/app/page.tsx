@@ -23,6 +23,11 @@ export default function Home() {
                 const style = document.createElement('style');
                 style.id = 'ashford-chat-fix';
                 style.textContent = \`
+                  /* Chat Window Container Styling */
+                  .chat-window {
+                      border: 1px solid #000000 !important;
+                  }
+
                   /* Fix bullet lists and padding */
                   ol, ul { padding-left: 25px !important; margin-left: 5px !important; }
                   .chat-message-text ol, .chat-message-text ul { padding-left: 25px !important; }
@@ -60,6 +65,68 @@ export default function Home() {
                       -webkit-text-fill-color: #ffffff !important;
                       opacity: 1 !important;
                   }
+
+                  /* --- Input Field Enhancements --- */
+                  /* Find the wrapper that contains the textarea and make it relative */
+                  div:has(> textarea) {
+                      padding: 16px !important;
+                      border-top: 1px solid #E4E7EC !important;
+                      position: relative !important;
+                      background: white !important;
+                  }
+
+                  /* The Text Input */
+                  textarea {
+                      background-color: #f8fafc !important;
+                      border: 1px solid #e2e8f0 !important;
+                      border-radius: 24px !important;
+                      padding: 12px 50px 12px 20px !important;
+                      font-size: 0.95rem !important;
+                      font-family: 'Inter', sans-serif !important;
+                      outline: none !important;
+                      box-shadow: none !important;
+                      width: 100% !important;
+                      min-height: 48px !important;
+                      transition: all 0.2s ease !important;
+                      margin: 0 !important;
+                  }
+                  textarea:focus {
+                      border-color: #1a2942 !important;
+                      background-color: #ffffff !important;
+                  }
+
+                  /* The Send Button (Selects the button next to the textarea) */
+                  textarea + button, button:has(> svg path[d*="M2"]) {
+                      background-color: #1a2942 !important;
+                      border-radius: 50% !important;
+                      width: 36px !important;
+                      height: 36px !important;
+                      display: flex !important;
+                      align-items: center !important;
+                      justify-content: center !important;
+                      position: absolute !important;
+                      right: 24px !important;
+                      bottom: 22px !important;
+                      padding: 0 !important;
+                      border: none !important;
+                      transition: transform 0.1s ease !important;
+                      cursor: pointer !important;
+                      z-index: 10 !important;
+                  }
+                  textarea + button:hover {
+                      transform: scale(1.05) !important;
+                      background-color: #2c3e50 !important;
+                  }
+
+                  /* The Send Arrow SVG */
+                  textarea + button svg {
+                      fill: white !important;
+                      color: white !important;
+                      width: 16px !important;
+                      height: 16px !important;
+                      margin: 0 !important;
+                      transform: translate(1px, 0px) !important;
+                  }
                 \`;
                 const target = root.head || root;
                 if (target) target.appendChild(style);
@@ -80,11 +147,30 @@ export default function Home() {
       <style dangerouslySetInnerHTML={{
         __html: `
           :root {
-            --chat--color-primary: #1a2942;
-            --chat--color-secondary: #2c3e50;
-            --chat--color-background: #ffffff;
-            --chat--color-font: #1a2942;
+            /* Main Brand Colors */
+            --chat--color-primary: #1a2942 !important;
+            --chat--color-secondary: #2c3e50 !important;
+            --chat--color-background: #ffffff !important;
+            --chat--color-font: #1a2942 !important;
+            
+            /* Window Styling & Sizing */
             --chat--window--border-radius: 16px !important;
+            --chat--window--width: 45vw !important;
+            --chat--window--height: 82vh !important;
+            --chat--window--max-height: 82vh !important;
+            --chat--window--bottom: 9vh !important;
+            --chat--window--right: 2.5vw !important;
+            
+            /* Drop Shadow to make it pop off the background */
+            --chat--window--box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 20px rgba(0,0,0,0.05) !important;
+            
+            /* Message Bubbles - THIS FIXES THE INVISIBLE BUBBLES */
+            --chat--message--bot--background: #f1f5f9 !important;
+            --chat--message--bot--color: #0f172a !important;
+            --chat--message--user--background: #1a2942 !important;
+            --chat--message--user--color: #ffffff !important;
+            
+            /* Message Formatting */
             --chat--message--padding: 12px 16px !important;
             --chat--message--border-radius: 12px !important;
           }
