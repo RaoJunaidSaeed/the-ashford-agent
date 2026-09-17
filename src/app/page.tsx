@@ -174,6 +174,17 @@ export default function Home() {
             --chat--message--padding: 12px 16px !important;
             --chat--message--border-radius: 12px !important;
           }
+
+          /* Mobile Responsiveness for Chat Widget */
+          @media (max-width: 768px) {
+            :root {
+              --chat--window--width: 90vw !important;
+              --chat--window--height: 75vh !important;
+              --chat--window--max-height: 75vh !important;
+              --chat--window--right: 5vw !important;
+              --chat--window--bottom: 80px !important; /* Leave room for floating icon */
+            }
+          }
         `
       }} />
     </main>
