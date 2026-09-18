@@ -156,9 +156,9 @@ export default function Home() {
             /* Window Styling & Sizing */
             --chat--window--border-radius: 16px !important;
             --chat--window--width: 45vw !important;
-            --chat--window--height: 82vh !important;
-            --chat--window--max-height: 82vh !important;
-            --chat--window--bottom: 9vh !important;
+            --chat--window--height: calc(100vh - 90px) !important;
+            --chat--window--max-height: calc(100vh - 90px) !important;
+            --chat--window--bottom: 20px !important;
             --chat--window--right: 2.5vw !important;
             
             /* Drop Shadow to make it pop off the background */
